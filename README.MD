@@ -15,7 +15,6 @@ npm install @andyrmitchell/drizzle-dialect-types
 
 ## Usage
 
-This package provides tools for handling Drizzle ORM database drivers in a database-agnostic way. It includes type mappings and utility functions for working with PostgreSQL and SQLite dialects.
 
 ### Writing Database-Agnostic Functions
 
