@@ -6,8 +6,12 @@ export default defineConfig({
   clean: true,
   minify: false,
   target: ['esnext'],
-  external: ["drizzle-orm"],
+  external: [],//["drizzle-orm"],
   format: ['esm'], 
+  bundle: true,
+  splitting: false,
+  treeshake: true,
+  tsconfig: 'tsconfig.json',
   dts: true
 });
 
