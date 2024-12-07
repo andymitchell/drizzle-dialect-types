@@ -3,23 +3,20 @@ import { PostgresJsDatabase } from "drizzle-orm/postgres-js";
 import { PgliteDatabase } from "drizzle-orm/pglite";
 import { LibSQLDatabase } from 'drizzle-orm/libsql';
 import {BetterSQLite3Database} from 'drizzle-orm/better-sqlite3';
-
-
 import {PgDatabase } from 'drizzle-orm/pg-core';
-import { isTypeExtended, typeHasKeys } from "@andyrmitchell/utils";
-import type { Dialect } from "drizzle-orm";
+
 
 
 export const DT_DIALECTS = ['pg', 'sqlite'] as const;
 export type DdtDialect = typeof DT_DIALECTS[number];
-isTypeExtended<DdtDialect, Dialect>(true);
+
 
 
 export type DdtDialectDatabaseMap = {
     'pg': PgDdtDatabases,
     'sqlite': SqliteDdtDatabases
 }
-typeHasKeys<DdtDialectDatabaseMap, DdtDialect>(true);
+
 
 
 const sqliteDdtDatabases = [LibSQLDatabase, BetterSQLite3Database];
