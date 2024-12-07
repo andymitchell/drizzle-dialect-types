@@ -19,10 +19,10 @@ export type DdtDialectDatabaseMap = {
 
 
 
-const sqliteDdtDatabases = [LibSQLDatabase, BetterSQLite3Database];
+const SQLITE_DDT_DATABASES = [LibSQLDatabase, BetterSQLite3Database];
 export type SqliteDdtDatabases = LibSQLDatabase | BetterSQLite3Database;
 
-const pgDdtDatabases = [PgliteDatabase, PgDatabase, PostgresJsDatabase];
+const PG_DDT_DATABASES = [PgliteDatabase, PgDatabase, PostgresJsDatabase];
 export type PgDdtDatabases = PgliteDatabase | PgDatabase<any> | PostgresJsDatabase;
 
 export type DdtDatabases = SqliteDdtDatabases | PgDdtDatabases;
@@ -33,7 +33,7 @@ export type DdtDatabases = SqliteDdtDatabases | PgDdtDatabases;
  * @returns 
  */
 export function isDdtDialectPg(db:DdtDatabases):db is PgDdtDatabases {
-    return pgDdtDatabases.some(x => db instanceof x);
+    return PG_DDT_DATABASES.some(x => db instanceof x);
 }
 
 /**
@@ -42,10 +42,20 @@ export function isDdtDialectPg(db:DdtDatabases):db is PgDdtDatabases {
  * @returns 
  */
 export function isDdtDialectSqlite( db:DdtDatabases):db is SqliteDdtDatabases {
-    return sqliteDdtDatabases.some(x => db instanceof x);
+    return SQLITE_DDT_DATABASES.some(x => db instanceof x);
 }
 
 
 export type DdtPgDriver = 'pg' | 'pglite' | 'postgres';
 export type DdtSqliteDriver = 'libsql' | 'better-sqlite3';
 export type DdtSqliteTransactionMode = 'deferred' | 'immediate' | 'exclusive';
+
+/**
+ * Map
+ * 
+ * Because annoyingly, Drizzle's dialects are different between drizzle-orm and drizzle-kit. 
+ */
+export const DDT_DIALECT_TO_DRIZZLEKIT_DIALECT:Record<DdtDialect, "sqlite" | "postgresql" | "mysql" | "turso"> = {
+    'pg': 'postgresql',
+    'sqlite': 'sqlite'
+}
