@@ -1,0 +1,47 @@
+{
+  "name": "@andyrmitchell/drizzle-dialect-types",
+  "version": "0.0.1",
+  "description": "Simplify writing code that work with any database driver, while also allowing you to handle driver-specific logic by detecting the database dialect when needed.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build_release": "npm run build_prepare && np",
+    "build": "tsup",
+    "pkglint": "./build/publint_pipeable.sh",
+    "build_prepare": "npm run build && npm run pkglint",
+    "prepublishOnly": "npm run build_prepare",
+    "test": "vitest",
+    "test:watch": "vitest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andymitchell/drizzle-dialect-types.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    
+    "drizzle-orm": "^0.36.4"
+  },
+  "devDependencies": {
+    "@andyrmitchell/utils": "^0.7.6",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
