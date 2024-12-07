@@ -46,4 +46,6 @@ export function isDdtDialectSqlite( db:DdtDatabases):db is SqliteDdtDatabases {
 }
 
 
-export type DdtSqliteTransactionModes = 'deferred' | 'immediate' | 'exclusive';
+export type DdtPgDriver = 'pg' | 'pglite' | 'postgres';
+export type DdtSqliteDriver = 'libsql' | 'better-sqlite3';
+export type DdtSqliteTransactionMode = 'deferred' | 'immediate' | 'exclusive';
