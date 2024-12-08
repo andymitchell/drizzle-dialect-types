@@ -1,6 +1,6 @@
 {
   "name": "@andyrmitchell/drizzle-dialect-types",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simplify writing code that work with any database driver, while also allowing you to handle driver-specific logic by detecting the database dialect when needed.",
   "type": "module",
   "exports": {
